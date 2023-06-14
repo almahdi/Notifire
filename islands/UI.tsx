@@ -32,6 +32,8 @@ async function subscribeUserToPush(PUBLIC_KEY: string) {
     return pushSubscription;
 }
 
+const channel = new BroadcastChannel('sw-messages');
+
 export default function UI(props: { PUBLIC_KEY: string }) {
     const register = async () => {
         console.log("registering")
@@ -54,7 +56,9 @@ export default function UI(props: { PUBLIC_KEY: string }) {
     }
     useEffect(() => {
         try {
-            registerServiceWorker();
+            channel.addEventListener('message', event => {
+                console.log('Received', event.data);
+            });
         } catch (e) {
 
         }

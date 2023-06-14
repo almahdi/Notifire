@@ -1,7 +1,15 @@
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
 );
+const channel = new BroadcastChannel('sw-messages');
+self.addEventListener('push', async function(event) {
+    // console.log('Received a push message', event);
+    channel.postMessage({msg: 'Received a push message'});
+    const promiseChain = self.registration.showNotification('Hello, World.');
+    event.waitUntil(promiseChain);
+});
 
+// --------------------------------------------------
 const HTML_CACHE = "html";
 const JS_CACHE = "javascript";
 const STYLE_CACHE = "stylesheets";
@@ -9,6 +17,7 @@ const IMAGE_CACHE = "images";
 const FONT_CACHE = "fonts";
 
 self.addEventListener("message", (event) => {
+    console.log("SW Received Message: " + event.data);
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
@@ -73,18 +82,3 @@ workbox.routing.registerRoute(
     ],
   })
 );
-
-self.addEventListener('push', function(event) {
-    console.log('Received a push message', event);
-    if (event.data) {
-        console.log('This push event has data: ', event.data.text());
-    } else {
-        console.log('This push event has no data.');
-    }
-    const promiseChain = self.registration.showNotification('Hello, World.');
-    event.waitUntil(promiseChain);
-});
-
-self.addEventListener('install', function(event) {
-    console.log('Service Worker installing.');
-});

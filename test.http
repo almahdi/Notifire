@@ -9,7 +9,7 @@ content-type: application/json
 
 
 ### Test send with key
-POST http://localhost:8000/api/send/p9hRv77
+POST http://localhost:8000/api/send/dnDlexI
 content-type: application/json
 
 {
