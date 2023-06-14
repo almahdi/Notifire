@@ -1,0 +1,28 @@
+### Test send
+POST http://localhost:8000/api/send/WcMHk0p
+content-type: application/json
+
+{
+"message": "Hello World"
+}
+
+
+### Test send with key
+POST http://localhost:8000/api/send/Rkvdj5-
+content-type: application/json
+
+{
+    "message": "Hello World"
+}
+
+### Test send No Key
+POST http://localhost:8000/api/send
+content-type: application/json
+
+{
+  "key": "gkF6UU5",
+  "message": "Hello World"
+}
+
+### Test send GET
+GET http://localhost:8000/api/send/gkF6UU5
