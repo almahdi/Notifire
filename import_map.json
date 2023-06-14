@@ -8,7 +8,6 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
-    "$std/": "https://deno.land/std@0.187.0/",
-    "https://raw.githubusercontent.com/lucacasonato/esbuild_deno_loader/8031f71afa1bbcd3237a94b11f53a2e5c5c0e7bf/mod.ts": "/home/alialmahdi/Projects/esbuild_deno_loader/mod.ts"
+    "$std/": "https://deno.land/std@0.187.0/"
   }
 }
