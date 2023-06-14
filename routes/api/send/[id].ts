@@ -9,11 +9,11 @@ export const handler: Handler = async (req: Request, ctx: HandlerContext): Promi
         return new Response(JSON.stringify({error: "Invalid Subscription"}), {status: 401});
     }
     const request = await req.json();
+    let output;
     try {
-        // await InitializePush(PUBLIC_KEY, PRIVATE_KEY);
-        // const output = await push(subscription, JSON.stringify(request));
-        const output = await push(subscription, JSON.stringify(request));
-        console.log({output});
-    } catch (e) {}
-    return new Response(JSON.stringify({id, request, subscription}, null, 2));
+        output = await push(subscription, JSON.stringify(request));
+    } catch (e) {
+        return new Response(JSON.stringify({error: e.message}), {status: 500});
+    }
+    return new Response(JSON.stringify({output}, null, 2));
 };
