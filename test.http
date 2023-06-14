@@ -3,12 +3,13 @@ POST http://localhost:8000/api/send/702V_-A
 content-type: application/json
 
 {
-"message": "Hello World"
+"message": "Hello World",
+  "title": "Hello World"
 }
 
 
 ### Test send with key
-POST http://localhost:8000/api/send/7FVLyuB
+POST http://localhost:8000/api/send/p9hRv77
 content-type: application/json
 
 {

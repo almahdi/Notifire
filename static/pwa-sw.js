@@ -81,4 +81,10 @@ self.addEventListener('push', function(event) {
     } else {
         console.log('This push event has no data.');
     }
+    const promiseChain = self.registration.showNotification('Hello, World.');
+    event.waitUntil(promiseChain);
+});
+
+self.addEventListener('install', function(event) {
+    console.log('Service Worker installing.');
 });
