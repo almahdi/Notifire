@@ -14,7 +14,7 @@ content-type: application/json
 
 {
   "key": "McJAiyA",
-  "msg": "Hello World from HTTP Tester"
+  "msg": "Hello World from HTTP Tester 123"
 }
 
 ### Test send No Key

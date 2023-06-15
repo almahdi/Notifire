@@ -11,9 +11,15 @@ import Footer from "../components/Footer.tsx";
 
 const channel = new BroadcastChannel('sw-messages');
 
+type Notification = {
+    body: string;
+    timestamp: Date | number;
+};
+
 export default function UI(props: { PUBLIC_KEY: string }) {
     const [id, setId] = useState<string | null>(null);
-    const [notifications, setNotifications] = useState<Notification>([]);
+    const savedNotifications = JSON.parse(window.localStorage.getItem("notifications")) || [];
+    const [notifications, setNotifications] = useState<Notification>(savedNotifications);
     const register = useCallback(async () => {
         const registered = window.localStorage.getItem("registered");
         if (registered) {
@@ -41,11 +47,6 @@ export default function UI(props: { PUBLIC_KEY: string }) {
         }
 
     }, []);
-    const listNotifications = useCallback(() => {
-        getNotifications().then((notifications) => {
-            setNotifications(notifications);
-        });
-    }, []);
     useEffect(() => {
         try {
             const registered = window.localStorage.getItem("registered");
@@ -53,12 +54,22 @@ export default function UI(props: { PUBLIC_KEY: string }) {
                 setId(registered);
             }
             channel.addEventListener('message', event => {
-                listNotifications();
+                console.log(event.data.data);
+                setNotifications((notifications) => {
+                    return [...notifications, {
+                        body: event.data.data,
+                        timestamp: new Date().toISOString()
+                    }]
+                });
             });
         } catch (e) {
 
         }
     }, [])
+    useEffect(() => {
+        console.log("saving notifications", notifications);
+        window.localStorage.setItem("notifications", JSON.stringify(notifications));
+    }, [notifications]);
     return (<>
         <Navbar/>
         <div className="min-h-screen">
