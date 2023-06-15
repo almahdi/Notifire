@@ -1,3 +1,4 @@
+import {IS_BROWSER} from "$fresh/runtime.ts";
 import {useState, useCallback} from 'preact/hooks';
 import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
 import {useEffect} from "https://esm.sh/stable/preact@10.13.1/denonext/hooks.js";
@@ -18,7 +19,10 @@ type Notification = {
 
 export default function UI(props: { PUBLIC_KEY: string }) {
     const [id, setId] = useState<string | null>(null);
-    const savedNotifications = JSON.parse(window.localStorage.getItem("notifications")) || [];
+    let savedNotifications = [];
+    if (IS_BROWSER) {
+        savedNotifications = JSON.parse(window.localStorage.getItem("notifications")) || [];
+    }
     const [notifications, setNotifications] = useState<Notification>(savedNotifications);
     const register = useCallback(async () => {
         const registered = window.localStorage.getItem("registered");
