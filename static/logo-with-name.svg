@@ -4,9 +4,9 @@
 <svg
    version="1.1"
    id="svg2"
-   width="139.32916"
-   height="193.35608"
-   viewBox="0 0 139.32916 193.35607"
+   width="191.1662"
+   height="245.6344"
+   viewBox="0 0 191.1662 245.63439"
    sodipodi:docname="Fireball - Logo Template.ai"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -568,17 +568,22 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     showgrid="false" />
+     showgrid="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid14454" />
+  </sodipodi:namedview>
   <g
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="Page 1"
-     transform="matrix(1.3333333,0,0,-1.3333333,-548.06232,332.52935)">
+     transform="matrix(1.3333333,0,0,-1.3333333,-577.03235,332.52935)">
     <g
        id="g3168"
-       inkscape:export-filename="../../Projects/deno_projects/inotify/static/logo.png"
+       inkscape:export-filename="../../Projects/deno_projects/inotify/static/logo.svg"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       transform="translate(39)">
       <g
          id="g1290">
         <g
@@ -964,5 +969,17 @@
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       transform="scale(0.99881909,-1.0011823)"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:47.6891px;font-family:'Ceviche One';-inkscape-font-specification:CevicheOne-Regular;writing-mode:lr-tb;fill:#3f3b3a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.998819"
+       id="text2360-3-7"
+       x="431.04456"
+       y="-67.097237"><tspan
+         sodipodi:role="line"
+         id="tspan2358-6-5"
+         x="431.04456"
+         y="-67.097237"
+         style="stroke-width:0.998819">NotiFire</tspan></text>
   </g>
 </svg>

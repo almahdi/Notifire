@@ -3,7 +3,7 @@ import {
     ApplicationServerKeys,
     // generatePushHTTPRequest,
     setWebCrypto
-} from "webpush-webcrypto";
+} from "./webpush-webcrypto/webpush.js";
 
 setWebCrypto(crypto);
 const keys = await ApplicationServerKeys.generate();

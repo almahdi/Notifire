@@ -9,11 +9,12 @@ content-type: application/json
 
 
 ### Test send with key
-POST http://localhost:8000/api/send/YVvyzCB
+POST http://localhost:8000/api/send
 content-type: application/json
 
 {
-    "message": "Hello World"
+  "key": "McJAiyA",
+  "msg": "Hello World"
 }
 
 ### Test send No Key
