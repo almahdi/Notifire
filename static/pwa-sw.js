@@ -4,8 +4,11 @@ importScripts(
 const channel = new BroadcastChannel('sw-messages');
 self.addEventListener('push', async function(event) {
     // console.log('Received a push message', event);
-    channel.postMessage({msg: 'Received a push message'});
-    const promiseChain = self.registration.showNotification('Hello, World.');
+    channel.postMessage({msg: 'Received a push message', data: event.data.json()});
+    const promiseChain = self.registration.showNotification('NotiFire', {
+        body: event.data.json(),
+        icon: 'logo.png',
+    });
     event.waitUntil(promiseChain);
 });
 

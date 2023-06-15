@@ -2,6 +2,11 @@ import {useState} from 'preact/hooks';
 import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
 import {useEffect} from "https://esm.sh/stable/preact@10.13.1/denonext/hooks.js";
 import {askPermission, getNotifications, subscribeUserToPush} from "../utils/notifier.ts";
+import Navbar from "../components/Navbar.tsx";
+import Intro from "../components/intro.tsx";
+import RegisterButton from "../components/RegisterButton.tsx";
+import Curl from "../components/curl.tsx";
+import NotificationList from "../components/NotificationList.tsx";
 
 const channel = new BroadcastChannel('sw-messages');
 
@@ -51,14 +56,11 @@ export default function UI(props: { PUBLIC_KEY: string }) {
         }
     }, [])
     return (<>
-        <div class="p-4 mx-auto max-w-screen-md">
-            {id && <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                {id}
-            </div>}
-            <button onclick={() => register()}
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Register
-            </button>
-        </div>
+        <Navbar/>
+        {/*{!id && <Intro/>}*/}
+        <Intro/>
+        <RegisterButton onclick={()=>register()}/>
+        <Curl id={id}/>
+        <NotificationList/>
     </>)
 }

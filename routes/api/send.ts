@@ -20,7 +20,7 @@ export const handler: Handler = async (req: Request, ctx: HandlerContext): Promi
         if (!subscription) {
             return new Response(JSON.stringify({error: "Invalid Key"}), {status: 401});
         }
-        await push(subscription, JSON.stringify(request));
+        await push(subscription, JSON.stringify(parsed_request.msg));
         return new Response(JSON.stringify({message: 'success'}));
     } catch (e) {
         return new Response(JSON.stringify({error: e.message}), {status: 500});
