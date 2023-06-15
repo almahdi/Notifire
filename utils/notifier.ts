@@ -30,6 +30,6 @@ export async function subscribeUserToPush(PUBLIC_KEY: string) {
         applicationServerKey: base64.toUint8Array(PUBLIC_KEY),
     }
     const pushSubscription = await registration.pushManager.subscribe(subscribeOptions);
-    console.log('Received PushSubscription: ', JSON.stringify(pushSubscription));
+    // console.log('Received PushSubscription: ', JSON.stringify(pushSubscription));
     return pushSubscription;
 }

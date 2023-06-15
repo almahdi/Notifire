@@ -4,7 +4,7 @@ const kv = await Deno.openKv();
 
 export const cleanKv = async () => {
     const list = await listAll();
-    console.log(list);
+    // console.log(list);
     for (const item of list) {
 //     const primaryKey = item.key;
 //     const byAuthKey = ["subscriptions_by_auth", item.value.keys.auth];

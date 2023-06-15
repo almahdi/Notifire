@@ -2,7 +2,6 @@ import setClipboard from "../utils/clipboard.ts";
 
 
 export default function NotificationList({notifications}: { notifications: Notification[] }) {
-    console.log(notifications);
     return (
         <article className="max-w-xl mx-auto mt-8 prose-blue p-2 lg:p-0 lg:pb-8">
             <div>

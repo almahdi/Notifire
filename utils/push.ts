@@ -11,7 +11,7 @@ const keys = await ApplicationServerKeys.fromJSON({
     privateKey: PRIVATE_KEY
 });
 export async function push(subscription: Required<PushSubscriptionJSON>, data: string) {
-    console.log("Generating push request")
+    // console.log("Generating push request")
     const { headers, body, endpoint } = await generatePushHTTPRequest({
         applicationServerKeys: keys,
         payload: data,
@@ -31,7 +31,7 @@ export async function push(subscription: Required<PushSubscriptionJSON>, data: s
         body,
     });
     const json = res.status;
-    console.log(json);
+    // console.log(json);
     return json;
 
 }
