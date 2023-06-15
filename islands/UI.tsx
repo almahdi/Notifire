@@ -1,4 +1,4 @@
-import {useState} from 'preact/hooks';
+import {useState, useCallback} from 'preact/hooks';
 import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
 import {useEffect} from "https://esm.sh/stable/preact@10.13.1/denonext/hooks.js";
 import {askPermission, getNotifications, subscribeUserToPush} from "../utils/notifier.ts";
@@ -7,12 +7,14 @@ import Intro from "../components/intro.tsx";
 import RegisterButton from "../components/RegisterButton.tsx";
 import Curl from "../components/curl.tsx";
 import NotificationList from "../components/NotificationList.tsx";
+import Footer from "../components/Footer.tsx";
 
 const channel = new BroadcastChannel('sw-messages');
 
 export default function UI(props: { PUBLIC_KEY: string }) {
     const [id, setId] = useState<string | null>(null);
-    const register = async () => {
+    const [notifications, setNotifications] = useState<Notification>([]);
+    const register = useCallback(async () => {
         const registered = window.localStorage.getItem("registered");
         if (registered) {
             console.log("already registered")
@@ -38,7 +40,12 @@ export default function UI(props: { PUBLIC_KEY: string }) {
             console.log(e);
         }
 
-    }
+    }, []);
+    const listNotifications = useCallback(() => {
+        getNotifications().then((notifications) => {
+            setNotifications(notifications);
+        });
+    }, []);
     useEffect(() => {
         try {
             const registered = window.localStorage.getItem("registered");
@@ -46,10 +53,7 @@ export default function UI(props: { PUBLIC_KEY: string }) {
                 setId(registered);
             }
             channel.addEventListener('message', event => {
-                console.log('Received', event.data);
-            });
-            getNotifications().then((notifications) => {
-                console.log(notifications);
+                listNotifications();
             });
         } catch (e) {
 
@@ -57,10 +61,18 @@ export default function UI(props: { PUBLIC_KEY: string }) {
     }, [])
     return (<>
         <Navbar/>
-        {/*{!id && <Intro/>}*/}
-        <Intro/>
-        <RegisterButton onclick={()=>register()}/>
-        <Curl id={id}/>
-        <NotificationList/>
+        <div className="min-h-screen">
+            {!id && <>
+                <Intro/>
+                <RegisterButton onclick={() => register()}/>
+            </>
+            }
+            {id && <>
+                <Curl id={id}/>
+                <NotificationList notifications={notifications}/>
+            </>
+            }
+        </div>
+        <Footer/>
     </>)
 }

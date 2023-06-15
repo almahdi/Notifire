@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Fresh App</title>
+                <title>NotiFire</title>
                 <link
                     crossorigin="use-credentials"
                     rel="manifest"

@@ -14,14 +14,14 @@ export default function Navbar() {
 
                     </div>
 
-                    <div className="flex">
-                        <div className="flex flex-shrink-0 items-center">
-                            <div
-                                className="ml-3 sm:text-xl lg:text-2xl font-extrabold tracking-tight text-gray-900"><span
-                                className="text-blue-600">Ali</span>&nbsp;Almahdi
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="flex">*/}
+                    {/*    <div className="flex flex-shrink-0 items-center">*/}
+                    {/*        <div*/}
+                    {/*            className="ml-3 sm:text-xl lg:text-2xl font-extrabold tracking-tight text-gray-900"><span*/}
+                    {/*            className="text-blue-600">Ali</span>&nbsp;Almahdi*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </nav>
