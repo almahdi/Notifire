@@ -4,10 +4,6 @@ export async function getNotifications() {
     const registration = await navigator.serviceWorker.ready;
     return await registration.getNotifications();
 }
-export async function clearNotifications() {
-    const notifications = await getNotifications();
-    notifications.forEach(n => n.close());
-}
 export function askPermission() {
     return new Promise(function (resolve, reject) {
         const permissionResult = Notification.requestPermission(function (result) {
